@@ -1,0 +1,12 @@
+b5f25ccd1aa2657bc0340525bba4cdb6 *DESCRIPTION
+f135163e1c30363a4f78fd068c650eaf *NAMESPACE
+6ab0cc81bf08ab7e5d39c5a2c61c3110 *R/amplify.R
+cba5b5f0e63ddc68a21974c5c396be7e *R/wgtRank.R
+e6a25b02e3f715bf8edcc4510348069e *R/wgtRanktt.R
+16f4e00f80892a8e216ae5ddb3bdf2f6 *build/partial.rdb
+ef29ba7e057d086232e4f4344b9af676 *data/aHDL.rda
+8eef59f7f3d6e9ec333ff2a252f0d2b9 *man/aHDL.Rd
+aaaed92b1bb16feb3198bc610dc343ec *man/amplify.Rd
+157f6ecffc3993765e6fa3a1cb860b03 *man/weightedRank-package.Rd
+72a552f7ba4608e35d8fae50092fa1b8 *man/wgtRank.Rd
+358b3d78de3ab2fbda39fb059c46c518 *man/wgtRanktt.Rd

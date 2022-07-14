@@ -1,0 +1,4 @@
+exportPattern("^[[:alpha:]]+")
+importFrom("stats", "pnorm")
+importFrom("graphics", "boxplot")
+importFrom("mvtnorm", "pmvnorm")
