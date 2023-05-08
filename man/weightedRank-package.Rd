@@ -13,7 +13,8 @@
 The DESCRIPTION file:
 \packageDESCRIPTION{weightedRank}
 \packageIndices{weightedRank}
-The package conducts either fixed or adaptive sensitivity analyses for observational studies with I blocks and J individuals in each block, one treated and J-1 controls.  The two main functions are wgtRank() for a fixed test statistic, and wgtRanktt() for an adaptive choice of one of two test statistics.
+The package conducts either fixed or adaptive sensitivity analyses for observational studies with I blocks and J individuals in each block, one treated and J-1 controls.  The two main functions are wgtRank() for a fixed test statistic, and wgtRanktt() for an adaptive choice of one of two test statistics.  The function ef2C() is used to extract two evidence factors when a treated group
+is compared to two different control groups.
 }
 \author{
 \packageAuthor{weightedRank}
@@ -25,9 +26,13 @@ Berk, R. H. and Jones, D. H. (1978) <https://www.jstor.org/stable/4615706> Relat
 
 Quade, D. (1979) <doi:10.2307/2286991> Using weighted rankings in the analysis of complete blocks with additive block effects. Journal of the American Statistical Association, 74, 680-683.
 
+Rosenbaum, P. R. (1987). <doi:10.1214/ss/1177013232> The role of a second control group in an observational study. Statistical Science, 2, 292-306.
+
 Rosenbaum, P. R. (2011) <doi:10.1111/j.1541-0420.2010.01535.x> A new U‐Statistic with superior design sensitivity in matched observational studies. Biometrics, 67(3), 1017-1027.
 
 Rosenbaum, P. R. (2012) <doi:10.1093/biomet/ass032> Testing one hypothesis twice in observational studies. Biometrika, 99(4), 763-774.
+
+Rosenbaum, P. R. (2021) <doi:10.1201/9781003039648> Replication and Evidence Factors in Observational Studies.  Chapman and Hall/CRC.
 
 Rosenbaum, P. R. (2022)  Bahadur efficiency of observational block designs.  Manuscript.
 
