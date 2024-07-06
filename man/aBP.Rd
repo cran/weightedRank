@@ -47,7 +47,8 @@ US National Health and Nutrition Examination Survey
 \references{
 Roerecke, M., Kaczorowski, J., Tobe, S. W., Gmel, G., Hasan, O. S. and Rehm, J. (2017). <doi:10.1016/S2468-2667(17)30003-8> The effect of a reduction in alcohol consumption on blood pressure: a systematic review and meta-analysis. Lancet Public Health, 2, e108-e120.
 
-Rosenbaum, P. R. (2023) A second evidence factor associated with a second control group.  Manuscript.
+Rosenbaum, P. R. (2023) <doi:10.1111/biom.13921> A second evidence factor for a second control group. Biometrics, 79(4), 3968-3980.
+
 }
 \examples{
 

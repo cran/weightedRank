@@ -13,7 +13,7 @@
 The DESCRIPTION file:
 \packageDESCRIPTION{weightedRank}
 \packageIndices{weightedRank}
-The package conducts either fixed or adaptive sensitivity analyses for observational studies with I blocks and J individuals in each block, one treated and J-1 controls.  The two main functions are wgtRank() for a fixed test statistic, and wgtRanktt() for an adaptive choice of one of two test statistics.  The function ef2C() is used to extract two evidence factors when a treated group
+The package conducts either fixed or adaptive sensitivity analyses for observational studies with I blocks and J individuals in each block, one treated and J-1 controls.  The two main functions are wgtRank() for a fixed test statistic, and wgtRanktt() for an adaptive choice of one of two test statistics.  The function wgtRankCI() inverts the test to obtain confidence intervals and Hodges-Lehmann point estimates.  The function ef2C() is used to extract two evidence factors when a treated group
 is compared to two different control groups.
 }
 \author{
@@ -34,7 +34,9 @@ Rosenbaum, P. R. (2012) <doi:10.1093/biomet/ass032> Testing one hypothesis twice
 
 Rosenbaum, P. R. (2021) <doi:10.1201/9781003039648> Replication and Evidence Factors in Observational Studies.  Chapman and Hall/CRC.
 
-Rosenbaum, P. R. (2022)  Bahadur efficiency of observational block designs.  Manuscript.
+Rosenbaum, P. R. (2023) <doi:10.1111/biom.13921> A second evidence factor for a second control group. Biometrics, 79(4), 3968-3980.
+
+Rosenbaum, P. R. (2024) <doi:10.1080/01621459.2023.2221402> Bahadur efficiency of observational block designs. Journal of the American Statistical Association.
 
 Tardif, S. (1987) <doi:10.2307/2289476> Efficiency and optimality results for tests based on weighted rankings. Journal of the American Statistical Association, 82(398), 637-644.
 }

@@ -18,7 +18,7 @@ and 2015-2016.  There are 406 matched sets of four individuals, making 1624 indi
     \item{\code{female}}{1=female, 0=male}
     \item{\code{education}}{1 is <9th grade, 3 is high school, 5 is a BA degree}
     \item{\code{z}}{1=light almost daily alcohol, 0=little or no alcohol last year.}
-    \item{\code{grp}}{Treated group and control groups.  Daily=light almost daily alcohol, Never=fewer than 12 drinks during entire life, Rarely=more than 12 drinks in life, but fewer than 12 in the past year, and never had a period of daily binge drinking, PastBinge = a past history of binge drinking on most days, but currently drinks once a week or less.  For details, see Rosenbaum (2022a, Appendix).}
+    \item{\code{grp}}{Treated group and control groups.  Daily=light almost daily alcohol, Never=fewer than 12 drinks during entire life, Rarely=more than 12 drinks in life, but fewer than 12 in the past year, and never had a period of daily binge drinking, PastBinge = a past history of binge drinking on most days, but currently drinks once a week or less.  For details, see Rosenbaum (2023, Appendix).}
     \item{\code{grpL}}{Short labels for plotting formed as the first letters of grp. \code{D} < \code{N} < \code{R} < \code{B}}
     \item{\code{hdl}}{HDL cholesterol level mg/dL}
     \item{\code{mmercury}}{Methylmercury level ug/L}
@@ -30,9 +30,7 @@ There is a debate about whether light daily alcohol consumption -- a single glas
 
 The example contains several attempts to detect unmeasured confounding bias, if present.  There is a secondary outcome thought to be unaffected by alcohol consumption, namely methylmercury levels in the blood, likely an indicator of the consumption of fish, not of alcohol; see Pedersen et al. (1994) and WHO (2021).  There are also three control groups, all with little present alcohol consumption, but with different uses of alcohol in the past; see the definition of variable grp above.
 
-The appendix to Rosenbaum (2022a) describes the data and matching in detail.  It is used as an example in Rosenbaum (2022b).
-
-The help file for boxplotTT() applies the tail transformation to this example, reproducing a plot from Rosenbaum (2022b).
+The appendix to Rosenbaum (2023) describes the data and matching in detail.  The data are used as an example in Rosenbaum (2022).  The help file for boxplotTT() applies the tail transformation to this example, reproducing a plot from Rosenbaum (2022).
 
 This data set is also included in the tailTransform package.  See also the informedSen package which contains a part of this data set.
 }
@@ -54,12 +52,13 @@ Rosenbaum, P. R. (1989). The role of known effects in observational studies. Bio
 Rosenbaum, P. R. (1989). On permutation tests for hidden biases in observational studies. The Annals of Statistics, 17, 643-653.
 <doi:10.1214/aos/1176347131>
 
-Rosenbaum, P. R. (2014) Weighted M-statistics with superior design sensitivity in matched observational studies with multiple controls. Journal of the American Statistical Association, 109(507), 1145-1158
-<doi:10.1080/01621459.2013.879261>
+Rosenbaum, P. R. (2014) <doi:10.1080/01621459.2013.879261> Weighted M-statistics with superior design sensitivity in matched observational studies with multiple controls. Journal of the American Statistical Association, 109(507), 1145-1158
 
-Rosenbaum, P. R. (2022a). Sensitivity analyses informed by tests for bias in observational studies. Biometrics. <doi:10.1111/biom.13558>
+Rosenbaum, P. R. (2023) <doi:10.1111/biom.13558> Sensitivity analyses informed by tests for bias in observational studies. Biometrics 79, 475–487.
 
-Rosenbaum, P. R. (2022b). A new transformation of treated-control matched-pair differences for graphical display.  American Statistician, to appear. <doi:10.1080/00031305.2022.2063944>
+Rosenbaum, P. R. (2022). <doi:10.1080/00031305.2022.2063944> A new transformation of treated-control matched-pair differences for graphical display.  American Statistician, 76(4), 346-352.
+
+Rosenbaum, P. R. (2024) <doi:10.1080/01621459.2023.2221402> Bahadur efficiency of observational block designs. Journal of the American Statistical Association.
 
 Suh, I., Shaten, B. J., Cutler, J. A., and Kuller, L. H. (1992). Alcohol use and mortality from coronary heart disease: the role of high-density lipoprotein cholesterol. Annals of Internal Medicine 116, 881-887.
 <doi:10.7326/0003-4819-116-11-881>
@@ -76,7 +75,7 @@ table(aHDL$female,aHDL$grpL)
 table(aHDL$z,aHDL$grpL)
 
 # The sets were also matched for is.na(aHDL$mmercury), for use
-# in Rosenbaum (2022a).  About half of the matched sets
+# in Rosenbaum (2023).  About half of the matched sets
 # have values for mmercury.
 table(is.na(aHDL$mmercury),aHDL$grp)
 

@@ -11,7 +11,7 @@ function(y,phi="u868",phifunc=NULL,gamma=1){
   stopifnot(is.vector(gamma)&(length(gamma)==1)
             &(gamma>=1))
   if (is.null(phifunc))
-    {stopifnot(is.element(phi,c("u868","u878",
+    {stopifnot(is.element(phi,c("u868","u878","u888","u858",
                              "quade","wilc")))}
 
   ############## #
@@ -33,6 +33,8 @@ function(y,phi="u868",phifunc=NULL,gamma=1){
 
   u868<-function(pk){multrnksU(pk,m1=6,m2=8,m=8)}
   u878<-function(pk){multrnksU(pk,m1=7,m2=8,m=8)}
+  u888<-function(pk){multrnksU(pk,m1=8,m2=8,m=8)}
+  u858<-function(pk){multrnksU(pk,m1=5,m2=8,m=8)}
   quade<-function(pk){pk}
   wilc<-function(pk){rep(1,length(pk))}
   if (is.null(phifunc)){
@@ -40,6 +42,8 @@ function(y,phi="u868",phifunc=NULL,gamma=1){
     else if (phi=="u878") phifunc<-u878
     else if (phi=="quade") phifunc<-quade
     else if (phi=="wilc") phifunc<-wilc
+    else if (phi=="u888") phifunc<-u888
+    else if (phi=="u858") phifunc<-u858
     }
 
   separable1kA <- function (ymat, gamma = 1)

@@ -1,5 +1,6 @@
 exportPattern("^[[:alpha:]]+")
-importFrom("stats", "pnorm")
+importFrom("stats", "pnorm", "qnorm", "uniroot")
 importFrom("graphics", "boxplot")
 importFrom("mvtnorm", "pmvnorm")
 importFrom("sensitivitymv", "truncatedP")
+importFrom("senstrat", "senstrat")

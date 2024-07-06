@@ -4,14 +4,14 @@
 Adaptive Inference Using Two Test Statistics in a Block Design
 }
 \description{
-   Tests twice, using the better of two test statistics; see Rosenbaum (2012, 2022).
+   Tests twice, using the better of two test statistics; see Rosenbaum (2012, 2024).
 }
 \usage{
 wgtRanktt(y, phi1 = "u868", phi2 = "u878", phifunc1 = NULL, phifunc2 = NULL, gamma = 1)
 }
 \arguments{
   \item{y}{
- A matrix or data frame with I rows and J columns.  Column 1 contains the response of the treated individuals and columns 2 throught J contain the responses of controls in the same block.  A error will result if y contains NAs.
+ A matrix or data frame with I rows and J columns.  Column 1 contains the response of the treated individuals and columns 2 throught J contain the responses of controls in the same block.  An error will result if y contains NAs.
 }
   \item{phi1}{
 The weight function to be applied to the ranks of the within block ranges.  The options are: (i) "wilc" for the stratified Wilcoxon test, which gives every block the same weight, (ii) "quade" which ranks the within block ranges from 1 to I, and is closely related to Quade's (1979) statistic; see also Tardif (1987), (iii) "u868" based on Rosenbaum (2011), (iv) u878 based on Rosenbaum (2011).  Note that phi is ignored if phifunc is not NULL.
@@ -20,7 +20,7 @@ The weight function to be applied to the ranks of the within block ranges.  The 
   See phi1.
 }
   \item{phifunc1}{
-If not NULL, a user specified weight function for the ranks of the within block rates.  The function should map [0,1] into [0,1].  The function is applied to the ranks divided by the sample size.  See the example.
+If not NULL, a user specified weight function for the ranks of the within block ranges.  The function should map [0,1] into [0,1].  The function is applied to the ranks divided by the sample size.  See the example.
 }
   \item{phifunc2}{
  See phifunc1.
@@ -65,7 +65,7 @@ Rosenbaum, P. (2017) <doi:10.4159/9780674982697> Observation and Experiment: An 
 Rosenbaum, P. R. (2018) <doi:10.1214/18-AOAS1153> Sensitivity analysis for stratified comparisons in an observational study of the effect of smoking on homocysteine
 levels. The Annals of Applied Statistics, 12(4), 2312-2334.
 
-Rosenbaum, P. R. (2022)  Bahadur efficiency of observational block designs.  Manuscript.
+Rosenbaum, P. R. (2024) <doi:10.1080/01621459.2023.2221402> Bahadur efficiency of observational block designs. Journal of the American Statistical Association.
 
 Tardif, S. (1987) <doi:10.2307/2289476> Efficiency and optimality results for tests based on weighted rankings. Journal of the American Statistical Association, 82(398), 637-644.
 }

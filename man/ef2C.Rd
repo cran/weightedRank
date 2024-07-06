@@ -6,15 +6,15 @@ Evidence Factors For Matched Triples With Two Control Groups
 }
 \description{
 In an observational complete block design, with bocks of size three, each containing
-a treated individual and one control from each of two control groups, ef2C performs
+a treated individual and one control from each of two control groups, ef2C (with the default settings) performs
 the evidence factor analysis suggested in Rosenbaum (2023).  One factor compares
 the treated group to the first control group in a matched pairs analysis.  The
 other factor pools the treated group and the first control group and compares it
 to the second control group.
 }
 \usage{
-ef2C(y, gamma = 1, upsilon = 1, alternative = "greater",
-     trunc = 0.2)
+ef2C(y, gamma=1, upsilon=1, alternative="greater", trunc=0.2,
+    m=c(8,8), m1=c(7,8), m2=c(8,8), scores=c(1,2,5), range=FALSE)
 }
 
 \arguments{
@@ -29,18 +29,36 @@ A real number >=1 giving the value of the sensitivity parameter for the comparis
 }
   \item{alternative}{
 Use alternative=greater if the treatment is expect to cause an increase in the response in y.
-Use alternative=less if the treatment is expect to cause an decrease in the response in y.  In this context, a two-sided test is best viewed as two one-sided tests with a Bonferroni correction, e.g., testing in both tails at level 0.025 to ensure overall level of 0.05; see Cox (1977).  For more information, see the notes.
+Use alternative=less if the treatment is expect to cause a decrease in the response in y.  In this context, a two-sided test is best viewed as two one-sided tests with a Bonferroni correction, e.g., testing in both tails at level 0.025 to ensure overall level of 0.05; see Cox (1977).  For more information, see the notes.
 }
   \item{trunc}{
 The two P-values from the two factors are combined using the trucated product of P-values due to Zaykin et al. (2002): it is the P-value derived from the product of those P-values that are less
 than trunc.  For more information, see the notes.
 }
+  \item{m}{
+A vector of two integers greater than or equal to 1.  The first coordinate of m is for the first evidence factor, comparing the treated individual to the control from the first control group.  The second coordinate of m is for the second evidence factor, comparing the control from the second control group to the set containing the treated individual and the first control.  One of three parameters that define the weights that attach to blocks.  The three parameters are integers with 1 <= m1[1] <= m2[1] <= m[1] and 1 <= m1[2] <= m2[2] <= m[2].  The default settings are
+suggested in Rosenbaum (2023).  See Details.
+}
+  \item{m1}{
+A vector of two integers greater than or equal to 1.  See m.
+}
+  \item{m2}{
+A vector of two integers greater than or equal to 1.  See m.
+}
+  \item{scores}{
+A vector of three nonnegative integer scores used to rank the three responses in each block in the test concerning the second evidence factor.  The default settings are
+suggested in Rosenbaum (2023).  See Details.
+}
+  \item{range}{
+A TRUE or a FALSE for the second evidence factor.  If TRUE, blocks are ranked by their within-block ranges.  If FALSE, blocks are ranked by the so-called gap, which is the difference between the maximum order statistic in a block and the average of the remaining order statistics.  The default setting of FALSE is
+suggested in Rosenbaum (2023).  See Details.
+  }
 }
 \details{
-This is the recommended analysis in Rosenbaum (2023).  The example below reproduces
+The default settings produce the recommended evidence-factor analysis in Rosenbaum (2023).  The example below reproduces
 some results from the example in that paper.  That paper considered 40 test statistics in terms of
-the Bahadur efficiency of a sensitivity -- all of these analyses can be
-reproduced by the more flexible but more complicated dwgtRank function.
+the Bahadur efficiency of a sensitivity -- all of these analyses can be reproduced by the more flexible but more complicated dwgtRank function.  The ef2C function calls dwgtRank twice and combines the
+resulting two analyses.
 
 The comparison of the treated group and the first control group is equivalent to
 dwgtRank(y[,1:2],gamma=gamma,m=8,m1=7,m2=8,range=TRUE,alternative="greater"), and
@@ -74,28 +92,29 @@ upper tail.
 }
 
 \note{
-For a deeper understanding, see the documentation of dwgtRank.  That function
-is more general, but it requires more attention to detail by the user.  The
-documentation for dwgtRank also produces additional analyses from Rosenbaum (2023).
+For a deeper understanding, see the documentation of dwgtRank.
 }
 
 \references{
 
 Cox, D. R. (1977). The role of significance tests [with discussion and reply]. Scandinavian Journal of Statistics, 4, 49-70.
 
-Hsu, J. Y., Small, D. S., & Rosenbaum, P. R. (2013). <doi:10.1080/01621459.2012.742018> Effect modification and design sensitivity in observational studies. Journal of the American Statistical Association, 108(501), 135-148.
+Hsu, J. Y., Small, D. S., & Rosenbaum, P. R. (2013).
+<doi:10.1080/01621459.2012.742018> Effect modification and design sensitivity in observational studies. Journal of the American Statistical Association, 108(501), 135-148.
 
 Rosenbaum, P. R. (1987). <doi:10.1214/ss/1177013232> The role of a second control group in an observational study. Statistical Science, 2, 292-306.
 
 Rosenbaum, P. R. (2011a). <doi:10.1111/j.1541-0420.2010.01535.x> A new U‐Statistic with superior design sensitivity in matched observational studies. Biometrics, 67(3), 1017-1027.
 
-Rosenbaum, P. R. (2011). <doi:10.1198/jasa.2011.tm10422> Some approximate evidence factors in observational studies. Journal of the American Statistical Association, 106(493), 285-295.
+Rosenbaum, P. R. (2011a). <doi:10.1111/j.1541-0420.2010.01535.x> A new U‐Statistic with superior design sensitivity in matched observational studies. Biometrics, 67(3), 1017-1027.
+
+Rosenbaum, P. R. (2011b). <doi:10.1198/jasa.2011.tm10422> Some approximate evidence factors in observational studies. Journal of the American Statistical Association, 106(493), 285-295.
 
 Rosenbaum, P. R. (2015). <doi:10.1080/01621459.2014.960968> Bahadur efficiency of sensitivity analyses in observational studies. Journal of the American Statistical Association, 110(509), 205-217.
 
 Rosenbaum, P. R. (2021) <doi:10.1201/9781003039648> Replication and Evidence Factors in Observational Studies.  Chapman and Hall/CRC.
 
-Rosenbaum, P. R. (2023) A second evidence factor for a second control group.  Manuscript.  This paper develops a new statistic that performs well when there are two control groups and the second control group forms a second evidence factor.  See also Rosenbaum (2011b, 2021).
+Rosenbaum, P. R. (2023) <doi:10.1111/biom.13921> A second evidence factor for a second control group.  Biometrics 79, 3968-3980.
 
 Zaykin, D. V., Zhivotovsky, L. A., Westfall, P. H. and Weir, B. S. (2002) <doi:10.1002/gepi.0042> Truncated product method of combining P-values. Genetic Epidemiology, 22, 170-185.
 

@@ -6,7 +6,7 @@ Weighted Rank Statistics for Evidence Factors with Two Control Groups
 }
 \description{
 In an observational complete block design, dwgtRank computes a sensitivity analysis for a weighted rank statistic designed to perform well when the comparison of a treated group and two control
-groups is conducted as two nearly independent evidence factors; see Rosenbaum (2023b).  For this task, a suggested setting of m, m1, m2, scores and range is given in a note in the documentation below.  A simpler way to use the suggested settings is to use the function ef2C instead.
+groups is conducted as two nearly independent evidence factors; see Rosenbaum (2023).  For this task, a suggested setting of m, m1, m2, scores and range is given in a note in the documentation below.  A simpler way to use the suggested settings is to use the function ef2C instead.
 }
 \usage{
 dwgtRank(y, gamma = 1, m = 2, m1 = 2, m2 = 2, phifunc = NULL,
@@ -43,9 +43,9 @@ If range=TRUE, then the within-block ranges are calculated, ranked from 1 to I, 
 }
 }
 \details{
-The method uses a weighted rank statistic to compare the first column of y to the rest; see Rosenbaum (2023a,b).  Weighted rank statistics generalize the methods of Quade (1979) and Tardif (1987).  Quade (1979) applied unscored ranks to the I within block ranges, and used unscored ranks within-blocks.  In contrast, here, the scores of ranks of ranges or gaps are based on expression (9) in Rosenbaum (2011a); see also Rosenbaum (2014) where weighted M-statistics are used instead of weighted rank statistics.  If J=2, the method agrees exactly with the method for pairs in Rosenbaum (2011a).
+The method uses a weighted rank statistic to compare the first column of y to the rest; see Rosenbaum (2023, 2024).  Weighted rank statistics generalize the methods of Quade (1979) and Tardif (1987).  Quade (1979) applied unscored ranks to the I within block ranges, and used unscored ranks within-blocks.  In contrast, here, the scores of ranks of ranges or gaps are based on expression (9) in Rosenbaum (2011a); see also Rosenbaum (2014) where weighted M-statistics are used instead of weighted rank statistics.  If J=2, the method agrees exactly with the method for pairs in Rosenbaum (2011a).
 
-Using m=1, m1=1, m2=1, is the same as the stratified Wilcoxon rank sum with I strata, ignoring the ranges or gaps; see Lehmann 1975, Chapter 3).  Using m=2, m1=2, m2=2 applies unscored ranks to the I ranges or gaps.  Using m=5, m1=5, m2=5 is the suggestion of Conover and Salsburg (1988), and m=8, m1=8, m2=8 is a more extreme version of the same theme.  In pairs, J=2, m=8, m1=7, m2=8 performs well in Rosenbaum (2011a), as does m=8, m1=6, m2=8.  Detailed evaluations in terms of design sensitivity and Bahadur efficiency are in Rosenbaum (2023a,b).
+Using m=1, m1=1, m2=1, is the same as the stratified Wilcoxon rank sum with I strata, ignoring the ranges or gaps; see Lehmann 1975, Chapter 3).  Using m=2, m1=2, m2=2 applies unscored ranks to the I ranges or gaps.  Using m=5, m1=5, m2=5 is the suggestion of Conover and Salsburg (1988), and m=8, m1=8, m2=8 is a more extreme version of the same theme.  In pairs, J=2, m=8, m1=7, m2=8 performs well in Rosenbaum (2011a), as does m=8, m1=6, m2=8.  Detailed evaluations in terms of design sensitivity and Bahadur efficiency are in Rosenbaum (2023, 2024).
 }
 \value{
 \item{pval }{Upper bound on the one-sided P-value.}
@@ -53,13 +53,13 @@ Using m=1, m1=1, m2=1, is the same as the stratified Wilcoxon rank sum with I st
 }
 
 \note{
-SUGGESTED SETTINGS FOR m, m1, m2, range AND scores WHEN USED WITH TWO CONTROL GROUPS.  These suggested settings are more conveniently implemented in the function ef2C.  Rosenbaum (2023b) considered a matched block design with I blocks of size 3,
+SUGGESTED SETTINGS FOR m, m1, m2, range AND scores WHEN USED WITH TWO CONTROL GROUPS.  These suggested settings are more conveniently implemented in the function ef2C.  Rosenbaum (2023) considered a matched block design with I blocks of size 3,
 containing one treated individual and one control from each of two control
 groups.  The two evidence factors are: (1) compare treated to the first control
 group, and (2) compare the second control group to the pooled group that does
 not distinguish the treated individual and the control from the first control
 group.  For the matched pair comparison (1) with one control group,
-the suggested settings are (m=8, m1=7, m2=8), together with the defaults of range=TRUE and scores=NULL; see Rosenbaum (2011a).  For comparison (2), Rosenbaum (2023b) evaluated 40 statistics, judging best the
+the suggested settings are (m=8, m1=7, m2=8), together with the defaults of range=TRUE and scores=NULL; see Rosenbaum (2011a).  For comparison (2), Rosenbaum (2023) evaluated 40 statistics, judging best the
 statistic with (m=8, m1=8, m2=8), range=FALSE, scores=c(1,2,5), as illustrated
 below.  This statistic had good Bahadur efficiency of a sensitivity analysis
 against several simple alternative hypotheses involving a treatment effect
@@ -82,14 +82,14 @@ If the treatment is expected to cause an increase in the response, then
 comparison (1) applies the function to y[,1:2] with alternative =
 greater, and comparison (2) applies the function to y[,3:1] with
 alternative = less.  This is illustrated in the example below which
-reproduces analyses from Rosenbaum (2023b).  If the treatment is
+reproduces analyses from Rosenbaum (2023).  If the treatment is
 expected to cause a decrease in the response, then repeat these steps
 with y replaced by -y, so the treatment is expected to increase -y.
 }
 
 \note{
 ALTERNATIVE.  Setting alternative to less is the same as changing the sign of
-the within-block scored rank, that is, changing phi(a_ij) to -phi(a_ij) in Rosenbaum (2023b); see especially equation (1) in the on-line supplement to that paper.  Note carefully that setting alternative to less does not change the between block ranks, even when range=FALSE.  In general, in dwgtRank, changing the alternative will give a different answer from changing y to -y
+the within-block scored rank, that is, changing phi(a_ij) to -phi(a_ij) in Rosenbaum (2023); see especially equation (1) in the on-line supplement to that paper.  Note carefully that setting alternative to less does not change the between block ranks, even when range=FALSE.  In general, in dwgtRank, changing the alternative will give a different answer from changing y to -y
 if range=FALSE because, unlike the range, the gap is not invariant to the sign
 change.  I suggest using function ef2C -- the recommended analysis -- before trying out variations on that analysis using dwgtRank.
 
@@ -138,9 +138,9 @@ levels. The Annals of Applied Statistics, 12(4), 2312-2334.
 
 Rosenbaum, P. R. (2021) <doi:10.1201/9781003039648> Replication and Evidence Factors in Observational Studies.  Chapman and Hall/CRC.
 
-Rosenbaum, P. R. (2023a) Bahadur efficiency of observational block designs. Manuscript.  This paper extends the concept of the Bahadur efficiency of a sensitivity analysis from pairs (Rosenbaum 2015), J=2, to blocks, J>=2.
+Rosenbaum, P. R. (2024) <doi:10.1080/01621459.2023.2221402> Bahadur efficiency of observational block designs. Journal of the American Statistical Association.
 
-Rosenbaum, P. R. (2023b) A second evidence factor for a second control group.  Manuscript.  This paper develops a new statistic that performs well when there are two control groups and the second control group forms a second evidence factor.  This manuscript has an on-line supplement that provides several technical specifics.  See also Rosenbaum (2011b) and Rosenbaum (2021).
+Rosenbaum, P. R. (2023) <doi:10.1111/biom.13921> A second evidence factor for a second control group.  Biometrics 79, 3968-3980.
 
 Tardif, S. (1987). <doi:10.2307/2289476> Efficiency and optimality results for tests based on weighted rankings. Journal of the American Statistical Association, 82(398), 637-644.
 
@@ -150,11 +150,11 @@ Paul R. Rosenbaum
 }
 
 \note{
-  This function compares the first column of y to the other columns.  To implement the second evidence factor analysis in Rosenbaum (2023b), the second control group must be placed in the first column.  See the examples, where y is y[,1:2] for the first evidence factor, but y becomes y[,3:1] for the second evidence factor.  All of this is automated in the function ef2C.
+  This function compares the first column of y to the other columns.  To implement the second evidence factor analysis in Rosenbaum (2023), the second control group must be placed in the first column.  See the examples, where y is y[,1:2] for the first evidence factor, but y becomes y[,3:1] for the second evidence factor.  All of this is automated in the function ef2C.
 }
 
 \examples{
-# The calculation below reproduce analyses from Rosenbaum (2023b).
+# The calculation below reproduce analyses from Rosenbaum (2023).
 
 data(aBP)
 attach(aBP)
@@ -187,7 +187,7 @@ dwgtRank(y[,3:1],gamma=1.45,alternative="less",
           scores=c(1,2,3),m=1,m1=1,m2=1)
 
 # and theory leads us to expect this difference
-# in performance of the two statistics; see Rosenbaum (2023b)
+# in performance of the two statistics; see Rosenbaum (2023)
 
 # EVIDENCE FACTOR ANALYSIS, COMBINING TWO FACTORS
 # The evidence factor analysis compares treated to the first control group,
@@ -237,7 +237,7 @@ rm(y)
 
 # IN THIS LARGE SAMPLE SIZE, THE DESIGN SENSITIVITY PREDICTS
 # U888 WILL HAVE MORE POWER THAN U555, AND IT DOES.
-# SEE TABLE 2 OF ROSENBAUM (2023b), NORMAL tau=1/2
+# SEE TABLE 2 OF ROSENBAUM (2023), NORMAL tau=1/2
 # FOR U888/125/GAP AND U555/125/GAP
 set.seed(1)
 ss<-10000
@@ -254,7 +254,7 @@ dwgtRank(ysim[,3:1],gamma=3,alternative="less",scores=c(1,2,5),
 
 # IN THIS SMALLER SAMPLE SIZE, THE BAHADUR EFFICIENCY PREDICTS
 # U555 WILL HAVE MORE POWER THAN U888, AND IT DOES.
-# SEE TABLE 3 OF ROSENBAUM (2023b), NORMAL tau=1/2
+# SEE TABLE 3 OF ROSENBAUM (2023), NORMAL tau=1/2
 # FOR U888/125/GAP AND U555/125/GAP AT UPSILON = 1.5
 set.seed(1)
 ss<-100
