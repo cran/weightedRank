@@ -71,6 +71,9 @@ Rosenbaum, P. R. (2017). <doi:10.4159/9780674982697> Observation and Experiment:
 Rosenbaum, P. R. (2018). <doi:10.1214/18-AOAS1153> Sensitivity analysis for stratified comparisons in an observational study of the effect of smoking on homocysteine levels. The Annals of Applied Statistics, 12(4), 2312-2334.
 
 Rosenbaum, P. R. (2024) <doi:10.1080/01621459.2023.2221402> Bahadur efficiency of observational block designs. Journal of the American Statistical Association.
+119, 1871-1881.
+
+Rosenbaum, P. R. (2025) <doi:10.1007/978-3-031-90494-3> An Introduction to the Theory of Observational Studies.  Switzerland: Springer.
 
 Tardif, S. (1987). <doi:10.2307/2289476> Efficiency and optimality results for tests based on weighted rankings. Journal of the American Statistical Association, 82(398), 637-644.
 }
@@ -85,7 +88,7 @@ The computations use the separable approximation discussed in Gastwirth et al. (
 An alternative approach avoids rank tests and uses weighted M-statistics instead, as in the sensitivitymw package and Rosenbaum (2014).  However, Bahadur efficiency calculations are available for weighted rank statistics; see Rosenbaum (2024).
 }
 \examples{
-\dontrun{
+\donttest{
 data(aHDL)
 y<-t(matrix(aHDL$hdl,4,406))
 

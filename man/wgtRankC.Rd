@@ -34,7 +34,7 @@ individuals.
 \details{
 The conditional test restricts attention to blocks in which the treated
 individual has either the highest or lowest response in a block.  This
-tactic may be shown to increase design sensitivity; see Rosenbaum (2024).
+tactic may be shown to increase design sensitivity; see Rosenbaum (2025a).
 }
 \value{
 \item{pval }{The upper bound on the one-sided P-value}
@@ -62,14 +62,16 @@ Rosenbaum, P. R. (1987). <doi:10.2307/2336017> Sensitivity analysis for certain 
 
 Rosenbaum, P. R. (2004) <doi:10.1093/biomet/91.1.153> Design sensitivity in observational studies. Biometrika, 91, 153-164.
 
-Rosenbaum, P. R. (2011). <doi:10.1111/j.1541-0420.2010.01535.x> A new U‐Statistic with superior design sensitivity in matched observational studies. Biometrics, 67(3), 1017-1027.
+Rosenbaum, P. R. (2011) <doi:10.1111/j.1541-0420.2010.01535.x> A new U‐Statistic with superior design sensitivity in matched observational studies. Biometrics, 67(3), 1017-1027.
 
-Rosenbaum, P. (2017). <doi:10.4159/9780674982697> Observation and Experiment: An Introduction to Causal Inference.  Cambridge, MA: Harvard University Press.
+Rosenbaum, P. R. (2017) <doi:10.4159/9780674982697> Observation and Experiment: An Introduction to Causal Inference.  Cambridge, MA: Harvard University Press.
 
-Rosenbaum, P. R. (2024) <doi:10.1080/01621459.2023.2221402> Bahadur efficiency of observational block designs. Journal of the American Statistical Association.
+Rosenbaum, P. R. (2024) <doi:10.1080/01621459.2023.2221402> Bahadur efficiency of observational block designs. Journal of the American Statistical Association,
+119, 1871-1881.
 
-Rosenbaum, P. R. (2024) A conditioning tactic that increases design
-sensitivity in observational block designs.  Manuscript.
+Rosenbaum, P. R. (2025a) <doi:10.1093/jrsssb/qkaf007> A conditioning tactic that increases design sensitivity in observational block designs.  Journal of the Royal Statistical Society Series B: Statistical Methodology, qkaf007.
+
+Rosenbaum, P. R. (2025b) <doi:10.1007/978-3-031-90494-3> An Introduction to the Theory of Observational Studies.  Switzerland: Springer.
 
 Tardif, S. (1987) <doi:10.2307/2289476> Efficiency and optimality results for tests based on weighted rankings. Journal of the American Statistical Association, 82, 637-644.
 }

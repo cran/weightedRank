@@ -1,10 +1,10 @@
 wgtRanktt <-
 function(y,phi1="u868",phi2="u878",phifunc1=NULL,phifunc2=NULL,gamma=1){
-  
+
   ############## #
   # check input  #
   ################
-  
+
   stopifnot(is.matrix(y)|is.data.frame(y))
   stopifnot(0 == sum(is.na(as.vector(y))))
   stopifnot(min(dim(y))>=2)
@@ -12,18 +12,18 @@ function(y,phi1="u868",phi2="u878",phifunc1=NULL,phifunc2=NULL,gamma=1){
             &(gamma>=1))
   if (is.null(phifunc1)) {
     stopifnot(is.element(phi1,c("u868","u878",
-                                "quade","wilc")))}
+                                "quade","wilc", "mixed")))}
   if (is.null(phifunc2)) {
     stopifnot(is.element(phi2,c("u868","u878",
-                                "quade","wilc")))}
-  
-  
+                                "quade","wilc", "mixed")))}
+
+
   ############## #
   # subfunctions #
   ################
-  
+
   multrnksU <- function(pk, m1 = 2, m2 = 2, m = 2) {
-    # This is the right side of expression (9) 
+    # This is the right side of expression (9)
     # in Rosenbaum (2011) Biometrics page 1022
     # Note that 0 <= pk <= 1
     n <- length(pk)
@@ -32,31 +32,46 @@ function(y,phi1="u868",phi2="u878",phifunc1=NULL,phifunc2=NULL,gamma=1){
     for (l in m1:m2) {
       q <- q + (l * choose(m, l) * (pk^(l - 1)) * ((1 - pk)^(m - l)))
     }
+    q
+  }
+
+  u868<-function(pk){
+    q<-multrnksU(pk,m1=6,m2=8,m=8)
+    q/max(q)}
+  u878<-function(pk){
+    q<-multrnksU(pk,m1=7,m2=8,m=8)
+    q/max(q)}
+  quade<-function(pk){
+    q<-pk
+    q/max(q)}
+  wilc<-function(pk){
+    q<-rep(1,length(pk))
+    q/max(q)}
+  mixed<-function(pk){
+    q<-multrnksU(pk, m1 = 19, m2 = 20, m = 20)+
+      multrnksU(pk, m1 = 19, m2 = 19, m = 20)
     q/max(q)
   }
-  
-  u868<-function(pk){multrnksU(pk,m1=6,m2=8,m=8)}
-  u878<-function(pk){multrnksU(pk,m1=7,m2=8,m=8)}
-  quade<-function(pk){pk}
-  wilc<-function(pk){rep(1,length(pk))}
   if (is.null(phifunc1)){
     if (phi1=="u868") phifunc1<-u868
     else if (phi1=="u878") phifunc1<-u878
     else if (phi1=="quade") phifunc1<-quade
     else if (phi1=="wilc") phifunc1<-wilc
+    else if (phi1=="mixed") phifunc1<-mixed
   }
   if (is.null(phifunc2)){
     if (phi2=="u868") phifunc2<-u868
     else if (phi2=="u878") phifunc2<-u878
     else if (phi2=="quade") phifunc2<-quade
     else if (phi2=="wilc") phifunc2<-wilc
+    else if (phi2=="mixed") phifunc2<-mixed
   }
-  
-  separable1kA <- function (ymat, gamma = 1) 
+
+  separable1kA <- function (ymat, gamma = 1)
   {
     # Modified from separable1k in sensitivitymw package
     # Instead of producing the final inference,
-    # this version computes the max expectation and var 
+    # this version computes the max expectation and var
     n <- dim(ymat)[1]
     m <- dim(ymat)[2]
     o <- t(apply(ymat, 1, sort))
@@ -65,7 +80,7 @@ function(y,phi1="u868",phi2="u878",phifunc1=NULL,phifunc2=NULL,gamma=1){
     maxmu <- rep(-Inf, n)
     maxsig2 <- rep(-Inf, n)
     for (j in 1:(m - 1)) {
-      pr <- c(rep(1, j), rep(gamma, m - j))/(j + ((m - j) * 
+      pr <- c(rep(1, j), rep(gamma, m - j))/(j + ((m - j) *
                                                     gamma))
       mu <- as.vector(o %*% pr)
       sigma2 <- as.vector((o * o) %*% pr) - (mu * mu)
@@ -81,12 +96,12 @@ function(y,phi1="u868",phi2="u878",phifunc1=NULL,phifunc2=NULL,gamma=1){
     }
     list(maxmu=maxmu,maxsig2=maxsig2)
   }
-  
+
   #######################
   # Begin main function #
   #######################
-  
-  
+
+
   J<-dim(y)[2]
   nset<-dim(y)[1]
   rg<-apply(y,1,max)-apply(y,1,min) # ranges within blocks

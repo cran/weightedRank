@@ -4,7 +4,7 @@
 Adaptive Inference Using Two Test Statistics in a Block Design
 }
 \description{
-   Tests twice, using the better of two test statistics; see Rosenbaum (2012, 2024).
+   Tests twice, using the better of two test statistics; see Rosenbaum (2012; 2024, section 5; 2025a, section 9.5).
 }
 \usage{
 wgtRanktt(y, phi1 = "u868", phi2 = "u878", phifunc1 = NULL, phifunc2 = NULL, gamma = 1)
@@ -14,7 +14,9 @@ wgtRanktt(y, phi1 = "u868", phi2 = "u878", phifunc1 = NULL, phifunc2 = NULL, gam
  A matrix or data frame with I rows and J columns.  Column 1 contains the response of the treated individuals and columns 2 throught J contain the responses of controls in the same block.  An error will result if y contains NAs.
 }
   \item{phi1}{
-The weight function to be applied to the ranks of the within block ranges.  The options are: (i) "wilc" for the stratified Wilcoxon test, which gives every block the same weight, (ii) "quade" which ranks the within block ranges from 1 to I, and is closely related to Quade's (1979) statistic; see also Tardif (1987), (iii) "u868" based on Rosenbaum (2011), (iv) u878 based on Rosenbaum (2011).  Note that phi is ignored if phifunc is not NULL.
+The weight function to be applied to the ranks of the within block ranges.  The options are: (i) "wilc" for the stratified Wilcoxon test, which gives every block the same weight, (ii) "quade" which ranks the within block ranges from 1 to I, and is closely related to Quade's (1979) statistic; see also Tardif (1987), (iii) "u868" based on Rosenbaum (2011), (iv) "u878"" based on
+Rosenbaum (2011)
+and (v) "mixed" based on Rosenbaum (2025b).  Note carefully that phi is ignored if phifunc is not NULL.
 }
   \item{phi2}{
   See phi1.
@@ -65,7 +67,12 @@ Rosenbaum, P. (2017) <doi:10.4159/9780674982697> Observation and Experiment: An 
 Rosenbaum, P. R. (2018) <doi:10.1214/18-AOAS1153> Sensitivity analysis for stratified comparisons in an observational study of the effect of smoking on homocysteine
 levels. The Annals of Applied Statistics, 12(4), 2312-2334.
 
-Rosenbaum, P. R. (2024) <doi:10.1080/01621459.2023.2221402> Bahadur efficiency of observational block designs. Journal of the American Statistical Association.
+Rosenbaum, P. R. (2024) <doi:10.1080/01621459.2023.2221402> Bahadur efficiency of observational block designs. Journal of the American Statistical Association,
+119, 1871-1881.
+
+Rosenbaum, P. R. (2025a) <doi:10.1007/978-3-031-90494-3> An Introduction to the Theory of Observational Studies.  Switzerland: Springer.
+
+Rosenbaum, P. R. (2025b) A jackknife estimate of the power of a sensitivity analysis in an observational study.  Manuscript.
 
 Tardif, S. (1987) <doi:10.2307/2289476> Efficiency and optimality results for tests based on weighted rankings. Journal of the American Statistical Association, 82(398), 637-644.
 }
@@ -75,12 +82,14 @@ Paul R. Rosenbaum
 \note{
 For discussion of testing twice in matched pairs, see Rosenbaum (2012).
 
-Testing twice is also possible in block designs using weighted rank statistics because the same value of the unobserved covariate provides the upper bound for both statistics when using the separable approximation in Gastwirth et al. (2000) and Rosenbaum (2018, Remarks 4 and 5).  See also Rosenbaum (2022) where the Bahadur efficiency of such tests is computed.
+Testing twice is also possible in block designs using weighted rank statistics because the same value of the unobserved covariate provides the upper bound for both statistics when using the separable approximation in Gastwirth et al. (2000) and Rosenbaum (2018, Remarks 4 and 5).  See also Rosenbaum (2024) where the Bahadur efficiency of such tests is computed.  For a textbook discussion, see
+Rosenbaum (2025a, section 9.5).
 
 Other packages that use testing twice in a different way are "sensitivity2x2xk"" and "testtwice".  The "testtwice" package is restricted to matched pairs, and "sensitivity2x2xk"" is for binary outcomes.  With some attention to detail (e.g., the handling of zero pair differences), in the case of matched pairs, the "testtwice" package and the wgtRanktt() function will yield identical results.  In that sense, wgtRanktt() extends the method to blocks designs.
 
 Testing twice achieves the larger Bahadur efficiency of the two component statistics; see Berk and Jones (1978).
-}
+
+The "mixed" option for phi1 and phi2 is a partially redescending phi-function, as depicted in Rosenbaum (2025a, Figure 9.1), unlike U877 in that same figure which redescends to zero.  The "mixed" option is from Rosenbaum (2025b) and it is a U-statistic that is the sum of two U-statistics, namely (20,19,20) and (20,19,19) where the former is monotone increasing and the latter redescents to zero.  This "mixed" phi-function is a continuous function that resembles the winning "tailored" step function in Rosenbaum (2015). }
 
 
 \examples{
@@ -125,6 +134,25 @@ wgtRanktt(y,phi1="u868",phi2="u878",gamma=5.9)
 brown<-function(v){((v>=.333)+(v>=.667))/2}
 # In this example, the joint test rejects based on u878
 wgtRanktt(y,phi1="u878",phifunc2=brown,gamma=5.8)
+
+\donttest{
+# The following example reproduces Table 1 in Rosenbaum (2025b).
+hdl0<-y
+gammas<-c(1:6,6.25,6.5,6.75,6.875,7)
+o<-matrix(NA,length(gammas),7)
+rownames(o)<-gammas
+colnames(o)<-c("Wilcoxon","Quade","U868","U878","U888","Mixed","U878aMixed")
+for (i in 1:length(gammas)){
+  o[i,1]<-wgtRank(hdl0,phi="wilc",gamma=gammas[i])$pval
+  o[i,2]<-wgtRank(hdl0,phi="quade",gamma=gammas[i])$pval
+  o[i,3]<-wgtRank(hdl0,phi="u868",gamma=gammas[i])$pval
+  o[i,4]<-wgtRank(hdl0,phi="u878",gamma=gammas[i])$pval
+  o[i,5]<-wgtRank(hdl0,phi="u888",gamma=gammas[i])$pval
+  o[i,6]<-wgtRank(hdl0,phi="mixed",gamma=gammas[i])$pval
+  o[i,7]<-wgtRanktt(hdl0,phi1="u878",phi2="mixed",gamma=gammas[i])$jointP
+  }
+round(o,3)
+}
 }
 \keyword{ htest }
 \concept{Sensitivity analysis}

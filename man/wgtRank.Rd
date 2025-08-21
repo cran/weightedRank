@@ -15,7 +15,7 @@ wgtRank(y, phi = "u868", phifunc = NULL, gamma = 1)
  A matrix or data frame with I rows and J columns.  Column 1 contains the response of the treated individuals and columns 2 throught J contain the responses of controls in the same block.  An error will result if y contains NAs.
 }
   \item{phi}{
-     The weight function to be applied to the ranks of the within block ranges.  The options are: (i) "wilc" for the stratified Wilcoxon test, which gives every block the same weight, (ii) "quade" which ranks the within block ranges from 1 to I, and is closely related to Quade's (1979) statistic; see also Tardif (1987), (iii) "u858", "u868", "u878", or "u888" based on Rosenbaum (2011).  Note that phi is ignored if phifunc is not NULL.
+     The weight function to be applied to the ranks of the within block ranges.  The options are: (i) "wilc" for the stratified Wilcoxon test, which gives every block the same weight, (ii) "quade" which ranks the within block ranges from 1 to I, and is closely related to Quade's (1979) statistic; see also Tardif (1987), (iii) "u858", "u868", "u878", "u888" or "mixed" based on Rosenbaum (2011, 2025a,b). Note that phi is ignored if phifunc is not NULL.
 }
   \item{phifunc}{ If not NULL, a user specified weight function for the ranks of the within block ranges.  The function should map [0,1] into [0,1].  The function is applied to the ranks divided by the sample size.  See the example.
 }
@@ -24,7 +24,8 @@ wgtRank(y, phi = "u868", phifunc = NULL, gamma = 1)
 }
 }
 \details{
-This method is developed and evaluated in Rosenbaum (2024).
+This method is developed and evaluated in Rosenbaum (2024); see also
+Chapers 9, 10, and 11 in Rosenbaum (2025a).  The "mixed" phi function is discussed in Rosenbaum (2025b): it is a smooth phi function that resembles the winning "tailored" step function in Rosenbaum (2015).
 
 To test in the lower tail -- to test against the alternative that treated responses are lower than control responses, apply the function to -y.  For a two-sided test, do both one-sided tests and apply the Bonferroni inequality, doubling the smaller of the two one-sided P-value bounds; see Cox (1977, Section 4.2).
 }
@@ -60,7 +61,12 @@ Rosenbaum, P. (2017). <doi:10.4159/9780674982697> Observation and Experiment: An
 Rosenbaum, P. R. (2018). <doi:10.1214/18-AOAS1153> Sensitivity analysis for stratified comparisons in an observational study of the effect of smoking on homocysteine
 levels. The Annals of Applied Statistics, 12(4), 2312-2334.
 
-Rosenbaum, P. R. (2024) <doi:10.1080/01621459.2023.2221402> Bahadur efficiency of observational block designs. Journal of the American Statistical Association.
+Rosenbaum, P. R. (2024) <doi:10.1080/01621459.2023.2221402> Bahadur efficiency of observational block designs. Journal of the American Statistical Association,
+119, 1871-1881.
+
+Rosenbaum, P. R. (2025a) <doi:10.1007/978-3-031-90494-3> An Introduction to the Theory of Observational Studies.  Switzerland: Springer.
+
+Rosenbaum, P. R. (2025b) A jackknife estimate of the power of a sensitivity analysis in an observational study.  Manuscript.
 
 Tardif, S. (1987). <doi:10.2307/2289476> Efficiency and optimality results for tests based on weighted rankings. Journal of the American Statistical Association, 82(398), 637-644.
 }
