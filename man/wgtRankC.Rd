@@ -7,7 +7,8 @@ Sensitivity Analysis for a Conditional Weighted Rank Test
   Uses a conditional weighted rank statistic to perform a sensitivity analysis for an I x J observational block design in which each of I blocks contains one treated individual and J-1 controls.  The size J of a block must be at least 3.
 }
 \usage{
-wgtRankC(y, phi = "u878", phifunc = NULL, gamma = 1, alternative = "greater")
+wgtRankC(y, phi = "u878", phifunc = NULL, gamma = 1,
+       alternative = "greater")
 }
 \arguments{
   \item{y}{
@@ -69,7 +70,7 @@ Rosenbaum, P. R. (2017) <doi:10.4159/9780674982697> Observation and Experiment: 
 Rosenbaum, P. R. (2024) <doi:10.1080/01621459.2023.2221402> Bahadur efficiency of observational block designs. Journal of the American Statistical Association,
 119, 1871-1881.
 
-Rosenbaum, P. R. (2025a) <doi:10.1093/jrsssb/qkaf007> A conditioning tactic that increases design sensitivity in observational block designs.  Journal of the Royal Statistical Society Series B: Statistical Methodology, qkaf007.
+Rosenbaum, P. R. (2025a) <doi:10.1093/jrsssb/qkaf007> A conditioning tactic that increases design sensitivity in observational block designs.  Journal of the Royal Statistical Society Series B: Statistical Methodology, 85, 1085-1099.
 
 Rosenbaum, P. R. (2025b) <doi:10.1007/978-3-031-90494-3> An Introduction to the Theory of Observational Studies.  Switzerland: Springer.
 
@@ -111,3 +112,4 @@ wgtRankC(y,phifunc=noether,gamma=6.5)
 \concept{Quade's test}
 \concept{rbounds}
 \concept{Conditional weighted rank test}
+\concept{Conditioning tactic}

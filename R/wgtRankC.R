@@ -1,7 +1,8 @@
 wgtRankC <-
 function (y, phi = "u878", phifunc = NULL, gamma = 1,
-                         alternative="greater")
+            alternative="greater")
 {
+  #
   # Check input
   stopifnot((alternative=="greater")|(alternative=="less"))
   stopifnot(is.matrix(y) | is.data.frame(y))
