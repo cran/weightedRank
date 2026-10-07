@@ -51,8 +51,9 @@ the median starting age of 17.
 
 Measurements were made for up to 28 teeth, 14 upper, 14 lower, excluding 4 wisdom teeth. Pocket depth and loss of attachment are two complementary measures of the degree to which the gums have separated from the teeth; see Wei, Barker and Eke (2013). Pocket depth and loss of attachment are measured at six locations on each tooth, providing the tooth is present. A measurement at a location was taken to exhibit disease if it had either a loss of attachement >=4mm or a pocked depth >=4mm, so each tooth contributes six binary scores, up to 6x28=168 binary scores.  The variable pd is the percent of these binary scores indicating periodontal disease, 0 to 100 percent.
 
-The data from three NHANES surveys (specifically 2009-2010, 2011-2012, and 2013-2014) contain periodontal data and are used as an example in Rosenbaum (2026).  The data from one survey, 2011-2012, were used in Rosenbaum (2016).
-The example replicates analyses from Rosenbaum (2026); see also the documentation for gwgtRankC in this package where further analyses are replicated.
+The data from three NHANES surveys (specifically 2009-2010, 2011-2012, and 2013-2014) contain periodontal data discussed in Rosenbaum (2026a).  The new block design of Peri24and15 is an example from Rosenbaum
+(2026b).  The data from one survey, 2011-2012, were used in Rosenbaum (2016).
+The example in this documentation file replicates analyses from Rosenbaum (2026b); see also the documentation for gwgtRankC in this package where further analyses are replicated.
 }
 \note{Analyses should distinguish blocks of different sizes, but the information they can be combined in various ways: see the documentation for gwgtRankC in this package.
 In contrast, some care is required in plots and descriptive statistics.  One can straightforwardly but separately plot the blocks of the same size, but one cannot ignore block size by merging blocks of different sizes.  Suppose, however, that one merges the two treated groups from 2-to-2 blocks and 1-to-4 blocks, and merges the two control groups also; then marginal distributions of outcomes from the pooled treated and control groups are no longer comparable.  See Pimentel, Yoon and Keele (2015).  For instance, in the example, there is exact matching for sex; however, most 2-to-2 blocks are men and most 1-to-4 blocks are women.  Pool them and the pooled control group has proportionately more women than the pooled treated group.
@@ -77,9 +78,9 @@ Rosenbaum, P. R. (2015) <doi:10.1353/obs.2015.0000> Two R packages for sensitivi
 
 Rosenbaum, P. R. (2016) <doi:10.1214/16-AOAS942> Using Scheffe projections for multiple outcomes in an observational study of smoking and periondontal disease. Annals of Applied Statistics, 10, 1447-1471.
 
-Rosenbaum, Paul R. (2025) A design for observational studies in which some people avoid treatment.  Manuscript.
+Rosenbaum, Paul R. (2026a) <doi:10.1080/00031305.2026.2623909> A design for observational studies in which some people avoid treatment.  American Statistician, to appear.
 
-Rosenbaum, Paul R. (2026)  Simple, widely applicable observational designs that improve upon the matched pairs design.  Manuscript.
+Rosenbaum, Paul R. (2026b)  Simple, widely applicable observational designs that improve upon the matched pairs design.  Manuscript.
 
 Tomar, S. L. and Asma, S. (2000). Smoking attributable periodontitis in the United States: Findings from NHANES III. J. Periodont. 71, 743-751.
 

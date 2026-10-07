@@ -79,7 +79,9 @@ Rosenbaum, P. R. (2025a) <doi:10.1093/jrsssb/qkaf007> A conditioning tactic that
 
 Rosenbaum, P. R. (2025b) <doi:10.1007/978-3-031-90494-3> An Introduction to the Theory of Observational Studies.  Switzerland: Springer.
 
-Rosenbaum, P. R. (2026) Two Simple, Widely Applicable Observational Designs that Improve Upon the Matched Pairs Design.  Manuscript.
+Rosenbaum, Paul R. (2026a) <doi:10.1080/00031305.2026.2623909> A design for observational studies in which some people avoid treatment.  American Statistician, to appear.
+
+Rosenbaum, P. R. (2026b) Simple, Widely Applicable Observational Designs that Improve Upon the Matched Pairs Design.  Manuscript.
 
 Tardif, S. (1987) <doi:10.2307/2289476> Efficiency and optimality results for tests based on weighted rankings. Journal of the American Statistical Association, 82, 637-644.
 
@@ -106,7 +108,8 @@ results.
 }
 
 \examples{
-# The example replicates results from Rosenbaum (2026).
+# The example replicates results from Rosenbaum (2026b).
+
 
 data(Peri24and15)
 pppairs<-Peri24and15[Peri24and15$pair==1,] # Just the pairs of pairs

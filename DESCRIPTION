@@ -1,7 +1,7 @@
 Package: weightedRank
 Type: Package
 Title: Sensitivity Analysis Using Weighted Rank Statistics
-Version: 0.7.0
+Version: 0.7.2
 Authors@R: person("Paul", "Rosenbaum", 
                   email = "rosenbaum@wharton.upenn.edu",
                   role = c("aut", "cre"))
@@ -14,8 +14,8 @@ Suggests: sensitivitymw, sensitivitymult, DOS2, aamatch, nbpMatching,
         MASS
 Depends: R (>= 3.5.0)
 NeedsCompilation: no
-Packaged: 2026-01-11 21:47:31 UTC; rosenbap
+Packaged: 2026-10-07 20:40:32 UTC; rosenbap
 Author: Paul Rosenbaum [aut, cre]
 Maintainer: Paul Rosenbaum <rosenbaum@wharton.upenn.edu>
 Repository: CRAN
-Date/Publication: 2026-01-11 22:40:02 UTC
+Date/Publication: 2026-10-07 23:00:02 UTC
